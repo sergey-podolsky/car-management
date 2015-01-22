@@ -30,7 +30,7 @@ public class Main {
         @SuppressWarnings("unchecked")
         List<Car> cars = (List<Car>)entityManager.createQuery("from Car").getResultList();
         System.out.println("Number of cars in the database is " + cars.size());
-        Files.write(Paths.get("C:/Users/Sergey/Desktop/mercedes.jpg"), Iterables.getLast(cars).getImage());
+        Files.write(Paths.get("C:/Users/sergey_podolsky/Desktop/mercedes.jpg"), Iterables.getLast(cars).getImage());
 
         entityManager.close();
     }
@@ -44,6 +44,7 @@ public class Main {
         car.setCarType(CarType.SPORTS);
         car.setImage(loadImage("http://goautomedia.cdn.on.net/gallery/mercedes-benz/c-class/2011_05_01_mercedes-benz-c-class-c200-sedan05.jpg"));
         car.setPrice(new BigDecimal("41999.99"));
+        car.setDoorNumber(DoorNumber.THREE);
         return car;
     }
 

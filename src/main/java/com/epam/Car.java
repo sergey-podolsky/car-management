@@ -35,6 +35,9 @@ public class Car {
 
     @Transient
     private BigDecimal price;
+    
+    @Convert(converter=DoorNumberConverter.class)
+    private DoorNumber doorNumber;
 
     public Long getId() {
         return id;
@@ -99,4 +102,12 @@ public class Car {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+    
+    public DoorNumber getDoorNumber() {
+		return doorNumber;
+	}
+    
+    public void setDoorNumber(DoorNumber doorNumber) {
+		this.doorNumber = doorNumber;
+	}
 }
