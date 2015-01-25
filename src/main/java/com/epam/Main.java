@@ -53,7 +53,7 @@ public class Main {
         car.setImage(loadImage("http://goautomedia.cdn.on.net/gallery/mercedes-benz/c-class/2011_05_01_mercedes-benz-c-class-c200-sedan05.jpg"));
         car.setPrice(new BigDecimal("41999.99"));
         car.setDoorNumber(DoorNumber.THREE);
-        car.setRechargingTime(Duration.standardHours(48));
+        car.setTravelRangeKm(394);
         car.setRechargingTime(Duration.standardHours(8));
         return car;
     }

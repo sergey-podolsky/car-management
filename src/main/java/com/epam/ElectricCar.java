@@ -7,15 +7,15 @@ import javax.persistence.Entity;
 @Entity
 public class ElectricCar extends Car {
 
-    private Duration travelRange;
+    private int travelRangeKm;
     private Duration rechargingTime;
 
-    public Duration getTravelRange() {
-        return travelRange;
+    public int getTravelRangeKm() {
+        return travelRangeKm;
     }
 
-    public void setTravelRange(Duration travelRange) {
-        this.travelRange = travelRange;
+    public void setTravelRangeKm(int travelRangeKm) {
+        this.travelRangeKm = travelRangeKm;
     }
 
     public Duration getRechargingTime() {
