@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "VEHICLE")
 @SecondaryTable(name = "COMPANY")
-public class Car {
+public abstract class Car {
 
     @Id
     @GeneratedValue
@@ -23,9 +23,6 @@ public class Car {
     private String model;
 
     private Integer power;
-
-    @Embedded
-    private Engine engine;
 
     @Enumerated(EnumType.STRING)
     private CarType carType;
@@ -69,14 +66,6 @@ public class Car {
 
     public void setPower(Integer power) {
         this.power = power;
-    }
-
-    public Engine getEngine() {
-        return engine;
-    }
-
-    public void setEngine(Engine engine) {
-        this.engine = engine;
     }
 
     public CarType getCarType() {
