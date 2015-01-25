@@ -5,17 +5,17 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "VEHICLE")
-@SecondaryTable(name = "COMPANY")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Car {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private final Long id = null;
 
     @Version
     private final Integer version = null;
 
-    @Column(table = "COMPANY")
+    @Column
     @Basic(optional = false)
     private String manufacturer;
 

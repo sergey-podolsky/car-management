@@ -10,7 +10,7 @@ public class HybridCar extends Car {
 
     @Embedded
     private Engine engine;
-    private Duration travelRange;
+    private int travelRangeKm;
     private Duration rechargingTime;
 
     public Engine getEngine() {
@@ -21,12 +21,12 @@ public class HybridCar extends Car {
         this.engine = engine;
     }
 
-    public Duration getTravelRange() {
-        return travelRange;
+    public int getTravelRangeKm() {
+        return travelRangeKm;
     }
 
-    public void setTravelRange(Duration travelRange) {
-        this.travelRange = travelRange;
+    public void setTravelRangeKm(int travelRangeKm) {
+        this.travelRangeKm = travelRangeKm;
     }
 
     public Duration getRechargingTime() {

@@ -54,7 +54,7 @@ public class Main {
         car.setPrice(new BigDecimal("41999.99"));
         car.setDoorNumber(DoorNumber.THREE);
         car.setRechargingTime(Duration.standardHours(48));
-        car.setRechargingTime(Duration.standardHours(8));
+        car.setTravelRangeKm(394);
         return car;
     }
 
