@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "VEHICLE")
+@Inheritance(strategy = InheritanceType.JOINED)
 @SecondaryTable(name = "COMPANY")
 public abstract class Car {
 
