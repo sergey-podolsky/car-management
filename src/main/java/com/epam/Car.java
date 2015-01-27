@@ -1,30 +1,17 @@
 package com.epam;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.SecondaryTable;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.persistence.Version;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "VEHICLE")
 @SecondaryTable(name = "COMPANY")
-public abstract class Car {
+public class Car {
 
     @Id
     @GeneratedValue
@@ -37,8 +24,8 @@ public abstract class Car {
     @Basic(optional = false)
     private String manufacturer;
 
-    @Basic(optional = false)
-    private String model;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private CarModel model;
 
     @Enumerated(EnumType.STRING)
     private CarType carType;
@@ -56,6 +43,18 @@ public abstract class Car {
     @CollectionTable(name = "TECH_RECORD", joinColumns = {@JoinColumn(name = "VEHICLE_ID")})
     private List<TechRecord> techRecords = new ArrayList<>();
 
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "ENGINE_ID")
+    private Engine engine;
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
 	public Long getId() {
         return id;
     }
@@ -72,11 +71,11 @@ public abstract class Car {
         this.manufacturer = manufacturer;
     }
 
-    public String getModel() {
+    public CarModel getModel() {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel(CarModel model) {
         this.model = model;
     }
 
@@ -119,4 +118,9 @@ public abstract class Car {
     public void setTechRecords(List<TechRecord> techRecords) {
 		this.techRecords = techRecords;
 	}
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
+    }
 }

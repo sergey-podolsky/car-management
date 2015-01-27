@@ -1,10 +1,6 @@
 package com.epam;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Engine {
@@ -16,6 +12,8 @@ public class Engine {
 	private Integer power;
 	private Integer displacement;
 	private Integer numberOfCylinders;
+	@OneToOne(mappedBy = "engine")
+	private Car car;
 
 	public String getModel() {
 		return model;
