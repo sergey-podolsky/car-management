@@ -1,25 +1,21 @@
 package com.epam;
 
-import com.google.common.collect.Iterables;
-
-import org.apache.commons.io.IOUtils;
-import org.joda.time.Duration;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.net.URL;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Date;
-import java.util.List;
+import org.apache.commons.io.IOUtils;
+import org.joda.time.Duration;
 
 public class Main {
-    private static final String PERSISTENCE_UNIT = "HibernatePostgreSQL";
+    private static final String PERSISTENCE_UNIT = "HibernateMySQL";
 
     public static void main(String[] args) throws Exception {
         Car car = createCar();

@@ -61,3 +61,6 @@ $RECYCLE.BIN/
 *.iml
 *.prefs
 *.prefs
+*.prefs
+*.prefs
+.settings/org.eclipse.jdt.core.prefs

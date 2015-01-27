@@ -1,12 +1,25 @@
 package com.epam;
 
-import javax.persistence.*;
-
-import com.google.common.collect.Lists;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Basic;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.SecondaryTable;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "VEHICLE")
@@ -42,6 +55,7 @@ public abstract class Car {
     private DoorNumber doorNumber;
     
     @ElementCollection
+    @CollectionTable(name = "TECH_RECORD", joinColumns = {@JoinColumn(name = "VEHICLE_ID")})
     private List<TechRecord> techRecords = new ArrayList<>();
 
     public Long getId() {
