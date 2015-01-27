@@ -1,7 +1,12 @@
 package com.epam;
 
 import javax.persistence.*;
+
+import com.google.common.collect.Lists;
+
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "VEHICLE")
@@ -35,6 +40,9 @@ public abstract class Car {
     
     @Convert(converter=DoorNumberConverter.class)
     private DoorNumber doorNumber;
+    
+    @ElementCollection
+    private List<TechRecord> techRecords = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -98,5 +106,13 @@ public abstract class Car {
     
     public void setDoorNumber(DoorNumber doorNumber) {
 		this.doorNumber = doorNumber;
+	}
+    
+    public List<TechRecord> getTechRecords() {
+		return techRecords;
+	}
+    
+    public void setTechRecords(List<TechRecord> techRecords) {
+		this.techRecords = techRecords;
 	}
 }

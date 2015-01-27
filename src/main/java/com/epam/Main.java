@@ -1,6 +1,7 @@
 package com.epam;
 
 import com.google.common.collect.Iterables;
+
 import org.apache.commons.io.IOUtils;
 import org.joda.time.Duration;
 
@@ -8,15 +9,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
-    private static final String PERSISTENCE_UNIT = "HibernateMySQL";
+    private static final String PERSISTENCE_UNIT = "HibernatePostgreSQL";
 
     public static void main(String[] args) throws Exception {
         Car car = createCar();
@@ -34,7 +37,7 @@ public class Main {
             @SuppressWarnings("unchecked")
             List<Car> cars = (List<Car>) entityManager.createQuery("from Car").getResultList();
             System.out.println("Number of cars in the database is " + cars.size());
-            Files.write(Paths.get("C:/Users/sergey/Desktop/mercedes.jpg"), Iterables.getLast(cars).getImage());
+            //Files.write(Paths.get("C:/Users/sergey/Desktop/mercedes.jpg"), Iterables.getLast(cars).getImage());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -55,6 +58,7 @@ public class Main {
         car.setDoorNumber(DoorNumber.THREE);
         car.setRechargingTime(Duration.standardHours(48));
         car.setTravelRangeKm(394);
+        car.getTechRecords().add(new TechRecord("Repaired.", new Date(), "Uncle Bob"));
         return car;
     }
 

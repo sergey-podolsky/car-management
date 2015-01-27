@@ -34,5 +34,10 @@
             <artifactId>joda-time</artifactId>
             <version>LATEST</version>
         </dependency>
+        <dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>LATEST</version>
+		</dependency>
     </dependencies>
 </project>
