@@ -46,8 +46,7 @@ public class Main {
         HybridCar car = new HybridCar();
         car.setManufacturer("Mercedes Benz");
         car.setModel("S200");
-        car.setPower(600);
-        car.setEngine(new Engine("Jaguar", 4200));
+        car.setEngine(createEngine());
         car.setCarType(CarType.SPORTS);
         car.setImage(loadImage("http://goautomedia.cdn.on.net/gallery/mercedes-benz/c-class/2011_05_01_mercedes-benz-c-class-c200-sedan05.jpg"));
         car.setPrice(new BigDecimal("41999.99"));
@@ -56,6 +55,14 @@ public class Main {
         car.setTravelRangeKm(394);
         car.getTechRecords().add(new TechRecord("Repaired.", new Date(), "Uncle Bob"));
         return car;
+    }
+    
+    private static Engine createEngine() {
+    	Engine engine = new Engine();
+    	engine.setModel("Jaguar");
+    	engine.setPower(4200);
+    	engine.setNumberOfCylinders(256);
+    	return engine;
     }
 
     private static byte[] loadImage(String url) throws IOException {

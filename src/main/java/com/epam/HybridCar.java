@@ -1,14 +1,17 @@
 package com.epam;
 
-import org.joda.time.Duration;
-
-import javax.persistence.Embedded;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import org.joda.time.Duration;
 
 @Entity
 public class HybridCar extends Car {
 
-    @Embedded
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "ENGINE_ID")
     private Engine engine;
     private int travelRangeKm;
     private Duration rechargingTime;

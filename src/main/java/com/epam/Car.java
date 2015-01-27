@@ -40,8 +40,6 @@ public abstract class Car {
     @Basic(optional = false)
     private String model;
 
-    private Integer power;
-
     @Enumerated(EnumType.STRING)
     private CarType carType;
 
@@ -58,7 +56,7 @@ public abstract class Car {
     @CollectionTable(name = "TECH_RECORD", joinColumns = {@JoinColumn(name = "VEHICLE_ID")})
     private List<TechRecord> techRecords = new ArrayList<>();
 
-    public Long getId() {
+	public Long getId() {
         return id;
     }
 
@@ -80,14 +78,6 @@ public abstract class Car {
 
     public void setModel(String model) {
         this.model = model;
-    }
-
-    public Integer getPower() {
-        return power;
-    }
-
-    public void setPower(Integer power) {
-        this.power = power;
     }
 
     public CarType getCarType() {

@@ -1,12 +1,15 @@
 package com.epam;
 
-import javax.persistence.Embedded;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class OilCar extends Car {
 
-    @Embedded
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "ENGINE_ID")
     private Engine engine;
 
     public Engine getEngine() {

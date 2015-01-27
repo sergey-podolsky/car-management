@@ -2,36 +2,54 @@ package com.epam;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@Embeddable
+@Entity
 public class Engine {
 
-    @Column(name = "ENGINE_MODEL")
-    private String model;
+	@Id
+	@GeneratedValue
+	private final Long id = null;
+	private String model;
+	private Integer power;
+	private Integer displacement;
+	private Integer numberOfCylinders;
 
-    private Integer volume;
+	public String getModel() {
+		return model;
+	}
 
-    public Engine() {
-    }
+	public void setModel(String model) {
+		this.model = model;
+	}
 
-    public Engine(String model, Integer volume) {
-        this.model = model;
-        this.volume = volume;
-    }
+	public Integer getPower() {
+		return power;
+	}
 
-    public String getModel() {
-        return model;
-    }
+	public void setPower(Integer power) {
+		this.power = power;
+	}
 
-    public void setModel(String model) {
-        this.model = model;
-    }
+	public Integer getDisplacement() {
+		return displacement;
+	}
 
-    public Integer getVolume() {
-        return volume;
-    }
+	public void setDisplacement(Integer displacement) {
+		this.displacement = displacement;
+	}
 
-    public void setVolume(Integer volume) {
-        this.volume = volume;
-    }
+	public Integer getNumberOfCylinders() {
+		return numberOfCylinders;
+	}
+
+	public void setNumberOfCylinders(Integer numberOfCylinders) {
+		this.numberOfCylinders = numberOfCylinders;
+	}
+
+	public Long getId() {
+		return id;
+	}
 }
