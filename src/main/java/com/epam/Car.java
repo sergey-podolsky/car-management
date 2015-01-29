@@ -4,7 +4,9 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.*;
 
@@ -44,9 +46,17 @@ public class Car {
     @CollectionTable(name = "TECH_RECORD", joinColumns = {@JoinColumn(name = "VEHICLE_ID")})
     private List<TechRecord> techRecords = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "ENGINE_ID")
     private Engine engine;
+    
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinTable(
+    		name = "detail_car",
+    		joinColumns = {@JoinColumn(name = "VEHICLE_ID")},
+    		inverseJoinColumns = {@JoinColumn(name = "DETAIL_ID")})
+    @MapKey(name = "name")
+    private Map<String, Detail> details = new HashMap<>();
 
     public Engine getEngine() {
         return engine;
@@ -118,6 +128,14 @@ public class Car {
     
     public void setTechRecords(List<TechRecord> techRecords) {
 		this.techRecords = techRecords;
+	}
+    
+    public Map<String, Detail> getDetails() {
+		return details;
+	}
+
+	public void setDetails(Map<String, Detail> details) {
+		this.details = details;
 	}
 
     @Override

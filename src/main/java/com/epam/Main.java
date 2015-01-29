@@ -53,6 +53,8 @@ public class Main {
         car.setPrice(new BigDecimal("41999.99"));
         car.setDoorNumber(DoorNumber.THREE);
         car.getTechRecords().add(new TechRecord("Repaired.", new Date(), "Uncle Bob"));
+        Detail detail = new Detail("Tires", "Nokian");
+        car.getDetails().put(detail.getName(), detail);
         return car;
     }
     
@@ -65,6 +67,7 @@ public class Main {
     }
 
     private static byte[] loadImage(String url) throws IOException {
-        return IOUtils.toByteArray(new URL(url).openStream());
+        //return IOUtils.toByteArray(new URL(url).openStream());
+    	return new byte[] {1,2,3};
     }
 }
