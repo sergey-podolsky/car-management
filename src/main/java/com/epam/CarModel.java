@@ -1,9 +1,11 @@
 package com.epam;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +17,7 @@ public class CarModel {
     private final Integer id = null;
     private String name;
     private Date originDate;
-    @OneToMany(mappedBy = "model")
+    @OneToMany(mappedBy = "model", cascade = {CascadeType.ALL})
     private List<Car> cars = new ArrayList<>();
 
     public CarModel() {

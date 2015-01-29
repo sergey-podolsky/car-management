@@ -13,7 +13,6 @@ import javax.persistence.Persistence;
 
 import com.google.common.collect.Iterables;
 import org.apache.commons.io.IOUtils;
-import org.joda.time.Duration;
 
 public class Main {
     private static final String PERSISTENCE_UNIT = "HibernateMySQL";

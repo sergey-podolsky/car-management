@@ -24,7 +24,8 @@ public class Car {
     @Basic(optional = false)
     private String manufacturer;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "model_id")
     private CarModel model;
 
     @Enumerated(EnumType.STRING)
