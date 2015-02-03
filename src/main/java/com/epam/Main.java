@@ -28,13 +28,13 @@ public class Main {
             transaction.begin();
             entityManager.persist(car);
             transaction.commit();
-
-            // Restore last persisted car image onto disk
-            @SuppressWarnings("unchecked")
-            List<Car> cars = (List<Car>) entityManager.createQuery("from Car").getResultList();
-            System.out.println("Number of cars in the database is " + cars.size());
-            System.out.println(Iterables.getFirst(cars, null));
-            //Files.write(Paths.get("C:/Users/sergey/Desktop/mercedes.jpg"), Iterables.getLast(cars).getImage());
+            
+            CarDao carDao = new CarDao(entityManager);
+            System.out.println(carDao.findAllManufacturers());
+            System.out.println(carDao.findByModelName("S200"));
+            System.out.println(carDao.findByPowerBetween(4000, 5000));
+            System.out.println(carDao.findWithoutTechRecors());
+            System.out.println(carDao.findWithDetail("tires"));
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
