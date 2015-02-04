@@ -26,7 +26,7 @@ public class CarDao {
 				.getResultList();
 	}
 
-	public List<Car> findWithoutTechRecors() {
+	public List<Car> findWithoutTechRecords() {
 		return entityManager.createQuery("from Car car where size(car.techRecords) = 0", Car.class).getResultList();
 	}
 		

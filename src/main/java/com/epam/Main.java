@@ -2,17 +2,12 @@ package com.epam;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.net.URL;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-
-import com.google.common.collect.Iterables;
-import org.apache.commons.io.IOUtils;
 
 public class Main {
     private static final String PERSISTENCE_UNIT = "HibernateMySQL";
@@ -25,6 +20,7 @@ public class Main {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             EntityTransaction transaction = entityManager.getTransaction();
+
             transaction.begin();
             entityManager.persist(car);
             transaction.commit();
@@ -33,11 +29,19 @@ public class Main {
             System.out.println(carDao.findAllManufacturers());
             System.out.println(carDao.findByModelName("S200"));
             System.out.println(carDao.findByPowerBetween(4000, 5000));
-            System.out.println(carDao.findWithoutTechRecors());
+            System.out.println(carDao.findWithoutTechRecords());
             System.out.println(carDao.findWithDetail("tires"));
-        } catch (Exception e) {
-            e.printStackTrace();
+
+            transaction.begin();
+            car.setPrice(car.getPrice().add(new BigDecimal("1.00")));
+            car.getTechRecords().add(new TechRecord("Diagnosed", new Date(), "Uncle Bob"));
+            transaction.commit();
+
+            transaction.begin();
+            entityManager.remove(car);
+            transaction.commit();
         } finally {
+
             entityManager.close();
             entityManagerFactory.close();
         }

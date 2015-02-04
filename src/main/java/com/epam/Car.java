@@ -142,4 +142,39 @@ public class Car {
     public String toString() {
         return ReflectionToStringBuilder.toString(this);
     }
+
+    @PrePersist
+    private void prePersist() {
+        System.out.println("---------------- @PrePersist ----------------");
+    }
+
+    @PostPersist
+    private void postPersist() {
+        System.out.println("---------------- @PostPersist ----------------");
+    }
+
+    @PostLoad
+    private void postLoad() {
+        System.out.println("---------------- @PostLoad ----------------");
+    }
+
+    @PreUpdate
+    private void preUpdate() {
+        System.out.println("---------------- @PreUpdate ----------------");
+    }
+
+    @PostUpdate
+    private void postUpdate() {
+        System.out.println("---------------- @PostUpdate ----------------");
+    }
+
+    @PreRemove
+    private void preRemove() {
+        System.out.println("---------------- @PreRemove ----------------");
+    }
+
+    @PostRemove
+    private void postRemove() {
+        System.out.println("---------------- @PostRemove ----------------");
+    }
 }
