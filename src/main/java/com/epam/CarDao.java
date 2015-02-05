@@ -11,6 +11,7 @@ public class CarDao {
 		this.entityManager = entityManager;
 	}
 	
+	// An implicit association join
 	public List<Car> findByModelName(String modelName) {
 		return entityManager
 				.createQuery("from Car car where car.model.name = :modelName", Car.class)
@@ -18,11 +19,20 @@ public class CarDao {
 				.getResultList();
 	}
 	
+	// An ordinary join in the FROM clause
 	public List<Car> findByPowerBetween(Integer start, Integer end) {
 		return entityManager
-				.createQuery("from Car car where car.engine.power between :start and :end", Car.class)
+				.createQuery("select car from Car join Engine engine where engine.power between :start and :end", Car.class)
 				.setParameter("start", start)
 				.setParameter("end", end)
+				.getResultList();
+	}
+	
+	
+	// A fetch join in the FROM clause
+	public List<Car> findRepaired() {
+		return entityManager
+				.createQuery("from Car car join fetch TechRecord techRecord where tolower(techRecord.text) like 'repaired'", Car.class)
 				.getResultList();
 	}
 
