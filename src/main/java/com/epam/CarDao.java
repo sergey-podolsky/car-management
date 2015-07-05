@@ -22,7 +22,7 @@ public class CarDao {
 	// An ordinary join in the FROM clause
 	public List<Car> findByPowerBetween(Integer start, Integer end) {
 		return entityManager
-				.createQuery("select car from Car join Engine engine where engine.power between :start and :end", Car.class)
+				.createQuery("from Car car where car.engine.power between :start and :end", Car.class)
 				.setParameter("start", start)
 				.setParameter("end", end)
 				.getResultList();
