@@ -41,7 +41,6 @@ public class Main {
             entityManager.remove(car);
             transaction.commit();
         } finally {
-
             entityManager.close();
             entityManagerFactory.close();
         }
