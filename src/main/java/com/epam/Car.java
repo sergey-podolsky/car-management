@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "VEHICLE")
 @SecondaryTable(name = "COMPANY")
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "Discriminator")
 public abstract class Car {
 
     @Id

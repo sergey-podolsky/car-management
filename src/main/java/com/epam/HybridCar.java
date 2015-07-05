@@ -2,10 +2,12 @@ package com.epam;
 
 import org.joda.time.Duration;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("Hybrid")
 public class HybridCar extends Car {
 
     @Embedded
